@@ -11,8 +11,21 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          //body: ,
-          ),
+        appBar: AppBar(
+          backgroundColor: Colors.grey[800],
+          centerTitle: true,
+          title: Text('College Digital ID'),
+        ),
+        body: Profile(
+          name: 'Rakshit R. Jain',
+          address:
+              'B-403, Golden Pearl Apartment, Near Shanti Park Society, Bharuch',
+          batch: 'BTECH-CSE-2019-23',
+          phoneNumber: '8780871688',
+          imagesrc:
+              'https://www.pngitem.com/pimgs/m/192-1926160_transparent-ajax-png-anime-profile-png-download.png',
+        ),
+      ),
     );
   }
 }
@@ -21,7 +34,7 @@ class Profile extends StatelessWidget {
   //const Profile({Key key}) : super(key: key);
   final String name;
   final String address;
-  final int phoneNumber;
+  final String phoneNumber;
   final String batch;
   final String imagesrc;
   Profile(
@@ -36,12 +49,22 @@ class Profile extends StatelessWidget {
         children: <Widget>[
           Text(
             'MAHAKAL INSTITUTE OF',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 26.0,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2.0,
+            ),
           ),
           Text(
             'TECHNOLOGY',
+            style: TextStyle(
+              fontSize: 26.0,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2.0,
+            ),
           ),
-          ProfileImage(
-              'https://www.pngitem.com/pimgs/m/192-1926160_transparent-ajax-png-anime-profile-png-download.png'),
+          ProfileImage(imagesrc),
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -50,6 +73,30 @@ class Profile extends StatelessWidget {
                 colorFilter: new ColorFilter.mode(
                     Colors.black.withOpacity(0.2), BlendMode.dstATop),
               ),
+            ),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  name,
+                  style: TextStyle(fontSize: 24.0),
+                ),
+                Text(
+                  batch,
+                  style: TextStyle(fontSize: 24.0),
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Text(
+                  address,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                Text(
+                  phoneNumber,
+                  style: TextStyle(fontSize: 20.0),
+                )
+              ],
             ),
           ),
         ],
