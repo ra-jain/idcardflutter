@@ -39,7 +39,8 @@ var alkiris = Person(
   imagesrc:
       'https://cutewallpaper.org/21/anime-profile-pictures-boy/cartoon-and-anime-profile-pics-toon.pfps-Instagram-Profile-.jpg',
 );
-var arrayofPerson = [rakshit, rain, alkiris];
+var custom;
+var arrayofPerson = [rakshit, rain, alkiris, custom];
 
 class Main extends StatefulWidget {
   //const Main({Key key}) : super(key: key);
@@ -225,9 +226,14 @@ class ProfileCreate extends StatefulWidget {
   _ProfileCreateState createState() => _ProfileCreateState();
 }
 
+String name;
+String address;
+String batch;
+String phoneNumber;
+String imagesrc;
+
 class _ProfileCreateState extends State<ProfileCreate> {
   final _formkey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -236,22 +242,50 @@ class _ProfileCreateState extends State<ProfileCreate> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            TextFormField(validator: (value) {
-              if (value.isEmpty) {
-                return 'Empty value';
-              }
-              return null;
+            Text('Name'),
+            TextFormField(onSaved: (input) {
+              name = input;
+            }),
+            Text('Address'),
+            TextFormField(onSaved: (input) {
+              address = input;
+            }),
+            Text('Batch'),
+            TextFormField(onSaved: (input) {
+              batch = input;
+            }),
+            Text('Phone Number'),
+            TextFormField(onSaved: (input) {
+              phoneNumber = input;
+            }),
+            Text('Image location'),
+            TextFormField(onSaved: (input) {
+              imagesrc = input;
             }),
             TextButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, otherwise false.
-                if (_formkey.currentState.validate()) {
-                  //   ScaffoldMessenger.of(context)
-                  //       .showSnackBar(SnackBar(content: Text('Processing Data')));
-                }
-              },
-              child: Text('Submit'),
-            )
+                onPressed: () {
+                  _formkey.currentState.save();
+                  custom = Person(
+                      name: name,
+                      address: address,
+                      batch: batch,
+                      phoneNumber: phoneNumber,
+                      imagesrc: imagesrc);
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new Scaffold(
+                              body: Profile(
+                                name: custom.name,
+                                address: custom.address,
+                                batch: custom.batch,
+                                phoneNumber: custom.phoneNumber,
+                                imagesrc: custom.imagesrc,
+                              ),
+                            )),
+                  );
+                },
+                child: Text('Hello'))
           ],
         ),
       ),
