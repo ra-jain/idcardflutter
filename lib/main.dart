@@ -1,11 +1,64 @@
 import 'package:flutter/material.dart';
+// import 'package:profile/rakshit.dart';
 
 void main() {
   runApp(Main());
 }
 
-class Main extends StatelessWidget {
+class Person {
+  final String name;
+  final String address;
+  final String batch;
+  final String phoneNumber;
+  final String imagesrc;
+  Person(
+      {this.name, this.address, this.phoneNumber, this.batch, this.imagesrc});
+}
+
+var rakshit = Person(
+  name: 'Rakshit R. Jain',
+  address: 'B-403, Golden Pearl Apartment, Near Shanti Park Society, Bharuch',
+  batch: 'BTECH-CSE-2019-23',
+  phoneNumber: '8780871688',
+  imagesrc:
+      'https://www.pngitem.com/pimgs/m/192-1926160_transparent-ajax-png-anime-profile-png-download.png',
+);
+var rain = Person(
+  name: 'Rain Jain',
+  address: 'B-403, Golden Pearl Apartment, Near Shanti Park Society, Bharuch',
+  batch: 'BTECH-CSE-2019-23',
+  phoneNumber: '8780871688',
+  imagesrc:
+      'https://cutewallpaper.org/21/anime-profile-pictures-boy/cartoon-and-anime-profile-pics-toon.pfps-Instagram-Profile-.jpg',
+);
+var alkiris = Person(
+  name: 'Alooo kiris',
+  address: 'B-403, Golden Pearl Apartment, Near Shanti Park Society, Bharuch',
+  batch: 'BTECH-CSE-2019-23',
+  phoneNumber: '8780871688',
+  imagesrc:
+      'https://cutewallpaper.org/21/anime-profile-pictures-boy/cartoon-and-anime-profile-pics-toon.pfps-Instagram-Profile-.jpg',
+);
+var arrayofPerson = [rakshit, rain, alkiris];
+// var rain = Pe
+
+class Main extends StatefulWidget {
   //const Main({Key key}) : super(key: key);
+  @override
+  _MainState createState() => _MainState();
+}
+
+class _MainState extends State<Main> {
+  int _selectedIndex = 0;
+  final PageController _pageController = PageController();
+  int index = 0;
+  void onTabTapped(int ind) {
+    setState(() {
+      _selectedIndex = ind;
+    });
+    _pageController.animateToPage(ind,
+        duration: Duration(milliseconds: 500), curve: Curves.ease);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +69,62 @@ class Main extends StatelessWidget {
           centerTitle: true,
           title: Text('College Digital ID'),
         ),
-        body: Profile(
-          name: 'Rakshit R. Jain',
-          address:
-              'B-403, Golden Pearl Apartment, Near Shanti Park Society, Bharuch',
-          batch: 'BTECH-CSE-2019-23',
-          phoneNumber: '8780871688',
-          imagesrc:
-              'https://www.pngitem.com/pimgs/m/192-1926160_transparent-ajax-png-anime-profile-png-download.png',
+        body: PageView(
+          controller: _pageController,
+          children: <Widget>[
+            Profile(
+              name: arrayofPerson[0].name,
+              batch: arrayofPerson[0].batch,
+              address: arrayofPerson[0].address,
+              phoneNumber: arrayofPerson[0].phoneNumber,
+              imagesrc: arrayofPerson[0].imagesrc,
+            ),
+            Profile(
+              name: arrayofPerson[1].name,
+              batch: arrayofPerson[1].batch,
+              address: arrayofPerson[1].address,
+              phoneNumber: arrayofPerson[1].phoneNumber,
+              imagesrc: arrayofPerson[1].imagesrc,
+            ),
+            Profile(
+              name: arrayofPerson[2].name,
+              batch: arrayofPerson[2].batch,
+              address: arrayofPerson[2].address,
+              phoneNumber: arrayofPerson[2].phoneNumber,
+              imagesrc: arrayofPerson[2].imagesrc,
+            ),
+          ],
+          onPageChanged: (page) {
+            setState(() {
+              _selectedIndex = page;
+            });
+          },
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          // currentIndex: 0,
+          // backgroundColor: Colors.grey[800],
+          onTap: onTabTapped,
+          currentIndex: _selectedIndex,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_box,
+                  // color: Colors.white,
+                ),
+                label: 'Rakshit'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_box,
+                  // color: Colors.white,
+                ),
+                label: 'RAIN'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_box,
+                  // color: Colors.white,
+                ),
+                label: 'alkiris')
+          ],
         ),
       ),
     );
@@ -44,7 +145,7 @@ class Profile extends StatelessWidget {
     return Container(
       //child: child,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
