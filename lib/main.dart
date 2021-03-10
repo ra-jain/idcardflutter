@@ -40,7 +40,6 @@ var alkiris = Person(
       'https://cutewallpaper.org/21/anime-profile-pictures-boy/cartoon-and-anime-profile-pics-toon.pfps-Instagram-Profile-.jpg',
 );
 var arrayofPerson = [rakshit, rain, alkiris];
-// var rain = Pe
 
 class Main extends StatefulWidget {
   //const Main({Key key}) : super(key: key);
@@ -93,6 +92,7 @@ class _MainState extends State<Main> {
               phoneNumber: arrayofPerson[2].phoneNumber,
               imagesrc: arrayofPerson[2].imagesrc,
             ),
+            ProfileCreate()
           ],
           onPageChanged: (page) {
             setState(() {
@@ -102,28 +102,36 @@ class _MainState extends State<Main> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           // currentIndex: 0,
-          // backgroundColor: Colors.grey[800],
           onTap: onTabTapped,
           currentIndex: _selectedIndex,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_box,
-                  // color: Colors.white,
-                ),
-                label: 'Rakshit'),
+              icon: Icon(
+                Icons.account_box,
+                color: Colors.grey[850],
+              ),
+              label: 'rakshit',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_box,
+                color: Colors.grey[850],
+              ),
+              label: 'rain',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_box,
+                color: Colors.grey[850],
+              ),
+              label: 'alkiris',
+            ),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.account_box,
-                  // color: Colors.white,
+                  Icons.person_add,
+                  color: Colors.grey[850],
                 ),
-                label: 'RAIN'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_box,
-                  // color: Colors.white,
-                ),
-                label: 'alkiris')
+                label: 'Add User'),
           ],
         ),
       ),
@@ -165,7 +173,12 @@ class Profile extends StatelessWidget {
               letterSpacing: 2.0,
             ),
           ),
-          ProfileImage(imagesrc),
+          Center(
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(imagesrc),
+              radius: 150.0,
+            ),
+          ),
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -206,18 +219,42 @@ class Profile extends StatelessWidget {
   }
 }
 
-class ProfileImage extends StatelessWidget {
-  final String imagesrc;
-  ProfileImage(this.imagesrc);
-  //const ProfileImage({Key key}) : super(key: key);
+class ProfileCreate extends StatefulWidget {
+  // const ProfileCreate({Key key}) : super(key: key);
+  @override
+  _ProfileCreateState createState() => _ProfileCreateState();
+}
+
+class _ProfileCreateState extends State<ProfileCreate> {
+  final _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      child: Image(
-        image: NetworkImage(imagesrc),
+    return Container(
+      child: Form(
+        key: _formkey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            TextFormField(validator: (value) {
+              if (value.isEmpty) {
+                return 'Empty value';
+              }
+              return null;
+            }),
+            TextButton(
+              onPressed: () {
+                // Validate returns true if the form is valid, otherwise false.
+                if (_formkey.currentState.validate()) {
+                  //   ScaffoldMessenger.of(context)
+                  //       .showSnackBar(SnackBar(content: Text('Processing Data')));
+                }
+              },
+              child: Text('Submit'),
+            )
+          ],
+        ),
       ),
-      borderRadius: BorderRadius.circular(100),
     );
   }
 }
