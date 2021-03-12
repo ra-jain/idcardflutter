@@ -5,6 +5,12 @@ void main() {
   runApp(Main());
 }
 
+String name;
+String address;
+String batch;
+String phoneNumber;
+String imagesrc;
+
 class Person {
   final String name;
   final String address;
@@ -93,7 +99,7 @@ class _MainState extends State<Main> {
               phoneNumber: arrayofPerson[2].phoneNumber,
               imagesrc: arrayofPerson[2].imagesrc,
             ),
-            ProfileCreate()
+            ProfileCreate(),
           ],
           onPageChanged: (page) {
             setState(() {
@@ -102,6 +108,10 @@ class _MainState extends State<Main> {
           },
         ),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.shifting,
+          showUnselectedLabels: true,
+          showSelectedLabels: true,
+
           // currentIndex: 0,
           onTap: onTabTapped,
           currentIndex: _selectedIndex,
@@ -109,31 +119,29 @@ class _MainState extends State<Main> {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.account_box,
-                color: Colors.grey[850],
               ),
               label: 'rakshit',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.account_box,
-                color: Colors.grey[850],
               ),
               label: 'rain',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.account_box,
-                color: Colors.grey[850],
               ),
               label: 'alkiris',
             ),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person_add,
-                  color: Colors.grey[850],
                 ),
                 label: 'Add User'),
           ],
+          selectedItemColor: Colors.red[700],
+          unselectedItemColor: Colors.grey[850],
         ),
       ),
     );
@@ -225,12 +233,6 @@ class ProfileCreate extends StatefulWidget {
   @override
   _ProfileCreateState createState() => _ProfileCreateState();
 }
-
-String name;
-String address;
-String batch;
-String phoneNumber;
-String imagesrc;
 
 class _ProfileCreateState extends State<ProfileCreate> {
   final _formkey = GlobalKey<FormState>();
