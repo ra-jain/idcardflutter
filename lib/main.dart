@@ -5,12 +5,6 @@ void main() {
   runApp(Main());
 }
 
-String name;
-String address;
-String batch;
-String phoneNumber;
-String imagesrc;
-
 class Person {
   final String name;
   final String address;
@@ -236,6 +230,11 @@ class ProfileCreate extends StatefulWidget {
 
 class _ProfileCreateState extends State<ProfileCreate> {
   final _formkey = GlobalKey<FormState>();
+  String name;
+  String address;
+  String batch;
+  String phoneNumber;
+  String imagesrc;
   @override
   Widget build(BuildContext context) {
     return Container(
