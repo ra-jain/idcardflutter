@@ -238,31 +238,88 @@ class _ProfileCreateState extends State<ProfileCreate> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(16.0),
       child: Form(
         key: _formkey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Name'),
-            TextFormField(onSaved: (input) {
-              name = input;
-            }),
-            Text('Address'),
-            TextFormField(onSaved: (input) {
-              address = input;
-            }),
-            Text('Batch'),
-            TextFormField(onSaved: (input) {
-              batch = input;
-            }),
-            Text('Phone Number'),
-            TextFormField(onSaved: (input) {
-              phoneNumber = input;
-            }),
-            Text('Image location'),
-            TextFormField(onSaved: (input) {
-              imagesrc = input;
-            }),
+            TextFormField(
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  labelText: 'Name',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide()),
+                ),
+                onSaved: (input) {
+                  name = input;
+                }),
+            SizedBox(
+              height: 30.0,
+            ),
+            TextFormField(
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  labelText: 'Address',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide()),
+                ),
+                onSaved: (input) {
+                  address = input;
+                }),
+            SizedBox(
+              height: 30.0,
+            ),
+            TextFormField(
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  labelText: 'Batch',
+                  // focusedBorder: ,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide()),
+                ),
+                onSaved: (input) {
+                  batch = input;
+                }),
+            SizedBox(
+              height: 30.0,
+            ),
+            TextFormField(
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  labelText: 'Phone Number',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide()),
+                ),
+                onSaved: (input) {
+                  phoneNumber = input;
+                }),
+            SizedBox(
+              height: 30.0,
+            ),
+            TextFormField(
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  labelText: 'Image URL',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide()),
+                ),
+                onSaved: (input) {
+                  imagesrc = input;
+                }),
+            SizedBox(
+              height: 30.0,
+            ),
             TextButton(
                 onPressed: () {
                   _formkey.currentState.save();
@@ -276,6 +333,9 @@ class _ProfileCreateState extends State<ProfileCreate> {
                     context,
                     new MaterialPageRoute(
                         builder: (context) => new Scaffold(
+                              appBar: AppBar(
+                                title: Text('College ID 🤞😎'),
+                              ),
                               body: Profile(
                                 name: custom.name,
                                 address: custom.address,
@@ -286,7 +346,7 @@ class _ProfileCreateState extends State<ProfileCreate> {
                             )),
                   );
                 },
-                child: Text('Hello'))
+                child: Text('Submit'))
           ],
         ),
       ),
