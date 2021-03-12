@@ -257,7 +257,7 @@ class _ProfileCreateState extends State<ProfileCreate> {
                   name = input;
                 }),
             SizedBox(
-              height: 30.0,
+              height: 15.0,
             ),
             TextFormField(
                 textCapitalization: TextCapitalization.words,
@@ -272,7 +272,7 @@ class _ProfileCreateState extends State<ProfileCreate> {
                   address = input;
                 }),
             SizedBox(
-              height: 30.0,
+              height: 15.0,
             ),
             TextFormField(
                 textCapitalization: TextCapitalization.words,
@@ -288,7 +288,7 @@ class _ProfileCreateState extends State<ProfileCreate> {
                   batch = input;
                 }),
             SizedBox(
-              height: 30.0,
+              height: 15.0,
             ),
             TextFormField(
                 textCapitalization: TextCapitalization.words,
@@ -303,7 +303,7 @@ class _ProfileCreateState extends State<ProfileCreate> {
                   phoneNumber = input;
                 }),
             SizedBox(
-              height: 30.0,
+              height: 15.0,
             ),
             TextFormField(
                 textCapitalization: TextCapitalization.words,
@@ -318,7 +318,7 @@ class _ProfileCreateState extends State<ProfileCreate> {
                   imagesrc = input;
                 }),
             SizedBox(
-              height: 30.0,
+              height: 15.0,
             ),
             TextButton(
                 onPressed: () {
