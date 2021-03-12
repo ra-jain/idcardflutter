@@ -334,7 +334,7 @@ class _ProfileCreateState extends State<ProfileCreate> {
                     new MaterialPageRoute(
                         builder: (context) => new Scaffold(
                               appBar: AppBar(
-                                title: Text('College ID 🤞😎'),
+                                title: Text('College ID '),
                               ),
                               body: Profile(
                                 name: custom.name,
