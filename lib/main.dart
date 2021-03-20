@@ -61,24 +61,24 @@ class _MainState extends State<Main> {
                   title: Text(arrayofPerson[position].name),
                   onTap: () {
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Scaffold(
-                          appBar: AppBar(
-                            backgroundColor: Colors.grey[800],
-                            centerTitle: true,
-                            title: Text('College Digital ID'),
-                          ),
-                          body: Profile(
-                            name: arrayofPerson[position].name,
-                            batch: arrayofPerson[position].batch,
-                            address: arrayofPerson[position].address,
-                            phoneNumber: arrayofPerson[position].phoneNumber,
-                            imagesrc: arrayofPerson[position].imagesrc,
-                          ),
-                        ),
-                      ),
-                    );
+                        context,
+                        // MaterialPageRoute(
+                        //   builder: (context) => Scaffold(
+                        //     appBar: AppBar(
+                        //       backgroundColor: Colors.grey[800],
+                        //       centerTitle: true,
+                        //       title: Text('College Digital ID'),
+                        //     ),
+                        //     body: Profile(
+                        //       name: arrayofPerson[position].name,
+                        //       batch: arrayofPerson[position].batch,
+                        //       address: arrayofPerson[position].address,
+                        //       phoneNumber: arrayofPerson[position].phoneNumber,
+                        //       imagesrc: arrayofPerson[position].imagesrc,
+                        //     ),
+                        //   ),
+                        // ),
+                        _route(position));
                   },
                 );
               },
@@ -128,4 +128,33 @@ class _MainState extends State<Main> {
       ),
     );
   }
+}
+
+Route _route(hello) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[800],
+        centerTitle: true,
+        title: Text('College Digital ID'),
+      ),
+      body: Profile(
+        name: arrayofPerson[hello].name,
+        batch: arrayofPerson[hello].batch,
+        address: arrayofPerson[hello].address,
+        phoneNumber: arrayofPerson[hello].phoneNumber,
+        imagesrc: arrayofPerson[hello].imagesrc,
+      ),
+    ),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(500.0, 9999.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

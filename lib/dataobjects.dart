@@ -109,3 +109,4 @@ var hello = Person(
 );
 
 var arrayofPerson = [rakshit, rain, alkiris, hello];
+var custom = Person();

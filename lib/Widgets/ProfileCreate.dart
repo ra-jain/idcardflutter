@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:profile/dataobjects.dart';
 // Widgets
@@ -11,7 +12,6 @@ class ProfileCreate extends StatefulWidget {
 }
 
 class _ProfileCreateState extends State<ProfileCreate> {
-  var custom = Person();
   final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -55,19 +55,20 @@ class _ProfileCreateState extends State<ProfileCreate> {
                     _formkey.currentState.save();
                     Navigator.push(
                       context,
-                      new MaterialPageRoute(
-                          builder: (context) => new Scaffold(
-                                appBar: AppBar(
-                                  title: Text('College ID '),
-                                ),
-                                body: Profile(
-                                  name: custom.name,
-                                  address: custom.address,
-                                  batch: custom.batch,
-                                  phoneNumber: custom.phoneNumber,
-                                  imagesrc: custom.imagesrc,
-                                ),
-                              )),
+                      MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                          appBar: AppBar(
+                            title: Text('College ID '),
+                          ),
+                          body: Profile(
+                            name: custom.name,
+                            address: custom.address,
+                            batch: custom.batch,
+                            phoneNumber: custom.phoneNumber,
+                            imagesrc: custom.imagesrc,
+                          ),
+                        ),
+                      ),
                     );
                   }
                 },
@@ -78,3 +79,12 @@ class _ProfileCreateState extends State<ProfileCreate> {
     );
   }
 }
+
+// Route _route() {
+//   return PageRouteBuilder(
+//     pageBuilder: (context, animation, secondaryAnimation) =>
+//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//       return child;
+//     },
+//   );
+// }
