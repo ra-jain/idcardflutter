@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:profile/dataobjects.dart';
 // Widgets
-import 'package:profile/Widgets/CustomInput.dart';
-import 'package:profile/Widgets/Profile.dart';
+import 'package:profile/widgets/CustomInput.dart';
+import 'package:profile/widgets/Profile.dart';
 
 class ProfileCreate extends StatefulWidget {
   // const ProfileCreate({Key key}) : super(key: key);

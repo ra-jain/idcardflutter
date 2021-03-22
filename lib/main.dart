@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:profile/dataobjects.dart';
 
 // Importing Widgets
-import 'package:profile/Widgets/Profile.dart';
-import 'package:profile/Widgets/ProfileCreate.dart';
+import 'package:profile/widgets/Profile.dart';
+import 'package:profile/widgets/ProfileCreate.dart';
 
 void main() {
   runApp(Main());
@@ -31,9 +31,10 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Idcard',
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey[800],
+          // backgroundColor: Colors.grey[800],
           centerTitle: true,
           title: Text('College Digital ID'),
         ),
@@ -147,7 +148,7 @@ Route _route(hello) {
       ),
     ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = Offset(500.0, 9999.0);
+      var begin = Offset(1.0, 0.0);
       var end = Offset.zero;
       var curve = Curves.ease;
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
