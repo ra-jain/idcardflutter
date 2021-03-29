@@ -43,7 +43,7 @@ class _MainState extends State<Main> {
         buttonColor: Colors.red,
         appBarTheme: AppBarTheme(color: Colors.red),
         buttonTheme: ButtonThemeData(buttonColor: Colors.red),
-      ~),
+      ),
       darkTheme: ThemeData(
           brightness: Brightness.dark,
           primaryColor: Colors.red,
