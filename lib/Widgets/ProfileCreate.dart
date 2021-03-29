@@ -20,7 +20,7 @@ class _ProfileCreateState extends State<ProfileCreate> {
       child: Form(
         key: _formkey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             CustomInput(
               text: 'Name',
