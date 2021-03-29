@@ -1,6 +1,7 @@
 // import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:profile/dataobjects.dart';
+// import 'package:profile/themes/theme.dart';
 
 // Importing Widgets
 import 'package:profile/widgets/Profile.dart';
@@ -32,6 +33,27 @@ class _MainState extends State<Main> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Idcard',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        // primarySwatch: MaterialColor,
+        primaryColor: Colors.red,
+        accentColor: Colors.red,
+        focusColor: Colors.red,
+        buttonColor: Colors.red,
+        appBarTheme: AppBarTheme(color: Colors.red),
+        buttonTheme: ButtonThemeData(buttonColor: Colors.red),
+      ~),
+      darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColor: Colors.red,
+          accentColor: Colors.red,
+          focusColor: Colors.red,
+          buttonColor: Colors.red,
+          appBarTheme: AppBarTheme(color: Colors.red),
+          buttonTheme: ButtonThemeData(buttonColor: Colors.red)
+          // appBarTheme: AppBarTheme(color: Colors.red)
+          ),
       home: Scaffold(
         appBar: AppBar(
           // backgroundColor: Colors.grey[800],
@@ -123,8 +145,8 @@ class _MainState extends State<Main> {
                 ),
                 label: 'Add User'),
           ],
-          selectedItemColor: Colors.red[700],
-          unselectedItemColor: Colors.grey[850],
+          selectedItemColor: Colors.red,
+          unselectedItemColor: Colors.white,
         ),
       ),
     );
@@ -135,7 +157,7 @@ Route _route(hello) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[800],
+        // backgroundColor: Colors.grey[800],
         centerTitle: true,
         title: Text('College Digital ID'),
       ),
