@@ -33,27 +33,31 @@ class _MainState extends State<Main> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Idcard',
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
-        // primarySwatch: MaterialColor,
         primaryColor: Colors.red,
         accentColor: Colors.red,
-        focusColor: Colors.red,
-        buttonColor: Colors.red,
-        appBarTheme: AppBarTheme(color: Colors.red),
-        buttonTheme: ButtonThemeData(buttonColor: Colors.red),
+        textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        )),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedItemColor: Colors.red, unselectedItemColor: Colors.black),
       ),
       darkTheme: ThemeData(
-          brightness: Brightness.dark,
-          primaryColor: Colors.red,
-          accentColor: Colors.red,
-          focusColor: Colors.red,
-          buttonColor: Colors.red,
-          appBarTheme: AppBarTheme(color: Colors.red),
-          buttonTheme: ButtonThemeData(buttonColor: Colors.red)
-          // appBarTheme: AppBarTheme(color: Colors.red)
-          ),
+        brightness: Brightness.dark,
+        primaryColor: Colors.red,
+        accentColor: Colors.red,
+        textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        )),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedItemColor: Colors.red, unselectedItemColor: Colors.white),
+      ),
       home: Scaffold(
         appBar: AppBar(
           // backgroundColor: Colors.grey[800],
@@ -145,8 +149,8 @@ class _MainState extends State<Main> {
                 ),
                 label: 'Add User'),
           ],
-          selectedItemColor: Colors.red,
-          unselectedItemColor: Colors.white,
+          // selectedItemColor: Colors.red,
+          // unselectedItemColor: Colors.white,
         ),
       ),
     );
